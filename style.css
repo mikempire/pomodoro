@@ -13,6 +13,7 @@ body {
     align-items: center;
     min-height: 100vh;
     text-align: center;
+    background-image: url("flowerBg.png");
 }
 
 .container {
@@ -55,9 +56,9 @@ body {
 }
 
 .work {
-    background-color: #6eff6e;
+    background-color: #e9ffe9;
 }
 
 .break {
-    background-color: #ff6e73;
+    background-color: #ffe3e4;
 }
