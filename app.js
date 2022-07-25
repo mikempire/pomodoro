@@ -2,6 +2,7 @@ let secondsInMs = 25 * 60;
 const minutesEl = document.querySelector('.minutes');
 const secondsEl = document.querySelector('.seconds');
 const main = document.querySelector('.main');
+const container  = document.querySelector('.container ');
 const startBtn = document.querySelector('.start');
 const pauseBtn = document.querySelector('.pause');
 const doneBtn = document.querySelector('.done');
@@ -29,6 +30,8 @@ startBtn.addEventListener('click', function () {
     startBtn.disabled = true;
     startBtn.classList.add('disabled');
 
+    pauseBtn.classList.remove('border');
+
 })
 
 
@@ -36,11 +39,15 @@ pauseBtn.addEventListener('click', function () {
     clearInterval(interval);
     startBtn.disabled = false;
     startBtn.classList.remove('disabled');
+    this.classList.add('border');
 })
 
 doneBtn.addEventListener('click', function () {
     clearInterval(interval);
     audio.play();
+    pauseBtn.classList.remove('border');
+    container.classList.remove('work');
+    container.classList.add('break');
     secondsInMs = 5*60;
     interval = setInterval(function () {
         timerDown();
@@ -52,7 +59,6 @@ doneBtn.addEventListener('click', function () {
             location.reload();
         }
     })
-
 })
 
 function timerDown() {
