@@ -40,6 +40,7 @@ pauseBtn.addEventListener('click', function () {
 
 doneBtn.addEventListener('click', function () {
     clearInterval(interval);
+    audio.play();
     secondsInMs = 5*60;
     interval = setInterval(function () {
         timerDown();
@@ -58,16 +59,18 @@ function timerDown() {
     secondsInMs--;
     let minutes = Math.floor(secondsInMs / 60);
     let seconds = Math.floor(secondsInMs % 60);
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
     if (seconds < 10) {
         seconds = `0${seconds}`;
     }
 
     minutesEl.innerText = minutes;
     secondsEl.innerText = seconds;
-    console.log(minutes);
-    console.log(seconds);
 
-    if (minutes == 0 && seconds == 00) {
+
+    if (minutes == 00 && seconds == 00) {
         audio.play();
         clearInterval(interval);
     }
